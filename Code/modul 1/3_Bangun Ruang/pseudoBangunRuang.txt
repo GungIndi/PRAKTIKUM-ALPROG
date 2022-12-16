@@ -1,0 +1,257 @@
+// Program Menghitung Bangun Ruang
+
+FUNCTION volumeTabung(float r, float t) : float
+DEKLARASI:
+    volume : float
+DESKRIPSI:
+BEGIN
+    volume = 3.14 * r * r * t
+    return volume
+END
+
+FUNCTION lpTabung(float r, float t): float
+DEKLARASI:
+    lp : float
+DESKRIPSI:
+BEGIN
+    lp = 2 * 3.14 * r * (r + t)
+    return lp
+END
+
+FUNCTION volumeBola(float r): float
+DEKLARASI:
+    volume : float
+DESKRIPSI:
+BEGIN
+    volume = (4 * 3.14 * r * r * r) / 3
+    return volume
+END
+
+FUNCTION lpBola(float r) : float
+DEKLARASI:
+    lp : float
+DESKRIPSI:
+BEGIN
+    lp = 4 * 3.14 * r * r
+    return lp
+END
+
+FUNCTION volumeLimas(float s, float t) : float
+DEKLARASI:
+    volume : float
+DESKRIPSI:
+BEGIN
+    volume = (s * s * t) / 3
+    return volume
+END
+
+FUNCTION lpLimas(float s, float sm) : float
+DEKLARASI:
+        lp : float
+DESKRIPSI:
+BEGIN
+    lp = (s * s) + (2 * s * sm)
+    return lp
+END
+
+FUNCTION volumePrisma(float a, float ta, float t) : float
+DEKLARASI:
+    volume : float
+DESKRIPSI:
+BEGIN
+    volume = (a * ta) / 2 * t
+    return volume
+END
+
+FUNCTION lpPrisma(float a, float b, float c, float ta, float t) : float
+DEKLARASI:
+    lp : float
+DESKRIPSI:
+BEGIN
+    lp = (a * ta) + ((a + b + c) * t)
+END
+
+FUNCTION volumeKerucut(float r, float t) : float
+DEKLARASI:
+    volume : float
+DESKRIPSI:
+BEGIN
+    volume = (3.14 * r * r * t) / 3
+    return volume
+END
+
+FUNCTION lpKerucut(float r, float gp) : float
+DEKLARASI:
+    lp : float
+DESKRIPSI:
+BEGIN
+    lp = 3.14 * r * (r + gp)
+END
+
+
+PROCEDURE namaKelompok() : void
+DESKRIPSI:
+BEGIN
+    WRITE "namaKelompok"
+    CALL system("pause")
+    CALL system("cls")
+END
+
+FUNCTION validasi_Int(float *var) : int
+DEKLARASI:
+    buff,cek : char 
+DESKRIPSI:
+BEGIN
+    CALL fflush(stdin)
+    IF (fgets(buff, sizeof(buff), stdin) != NULL) THEN
+        IF (sscanf(buff, "%f %c", var, &cek) == 1) THEN
+            return *var
+    return 0
+END
+
+
+PROCEDURE Input_Int(float *var, char *nama) : void
+DESKRIPSI:
+BEGIN
+    WHILE(1)
+    WRITE("%s", nama);
+    CALL fflush(stdin)
+    IF (validasi_Int(var)) THEN
+        BREAK
+    CALL system("cls")
+    WRITE " Maaf Input anda salah!"
+    WRITE " Masukan Input Dengan Benar" 
+    ENDFOR
+END
+
+PROCEDURE Input_negatif(float *var, char *nama) : void
+DESKRIPSI:
+BEGIN
+    WHILE (1)
+    CALL Input_Int(var, nama)
+    CALL fflush(stdin)
+    IF (*var >= 0)
+        BREAK
+    CALL system("cls")
+    WRITE " Maaf Input anda salah!"
+    WRITE " Masukan Input Dengan Benar" 
+    ENDWHILE
+END
+
+PROCEDURE range_Validasi_Int(float *var, int range1, int range2, char *nama) : void
+DESKRIPSI:
+BEGIN
+    WHILE (1)
+    CALL Input_Int(var, nama)
+    CALL fflush(stdin)
+    IF (*var >= range1 && *var <= range2)
+        BREAK
+    CALL system("cls")
+    WRITE " Maaf Input anda salah!"
+    WRITE " Masukan Input Dengan Benar" 
+    ENDWHILE
+END
+
+
+FUNCTION main() : int
+DEKLARASI:
+    input, read, jariJariTabung, tinggiTabung, jariJariBola, sisiLimas, tinggiLimas, tinggiSisiMiring, panjangAlasPrisma, panjangAlas2Prisma, panjangAlas3Prisma, tinggiAlasPrisma, tinggiPrisma, jariJariKerucut, tinggiKerucut, garisPelukisKerucut : float
+DESKRIPSI:
+BEGIN
+    CALL namaKelompok()
+    DO
+	WRITE "\t\t __________________________________________________________________  \n"
+	WRITE "\t\t   ______________________________________________________________  \n"
+	WRITE "\t\t| |                          MENGHITUNG                          | |\n"
+	WRITE "\t\t| |                         BANGUN RUANG                         | |\n"
+	WRITE "\t\t| |..............................................................| |\n"
+	WRITE "\t\t| |                        Mari Kita Coba                        | |\n"
+	WRITE "\t\t| |______________________________________________________________| |\n"
+	WRITE "\t\t| | 1.Tabung                                                     | |\n"
+	WRITE "\t\t| | 2.Bola                                                       | |\n"
+	WRITE "\t\t| | 3.Limas Segiempat                                            | |\n"
+	WRITE "\t\t| | 4.Prisma Segitiga                                            | |\n"
+	WRITE "\t\t| | 5.Kerucut                                                    | |\n"
+	WRITE "\t\t| |______________________________________________________________| |\n"
+	WRITE "\t\t____________________________________________________________________ \n\n"
+    CALL range_Validasi_Int(&input,1,5,"\n\n\t\t\t\t     Pilih bangun ruang: ")
+    CALL system("cls");  
+    IF (input==1) THEN 
+        WRITE " Masukkan jari-jari tabung: "
+        CALL Input_negatif(&jariJariTabung, " ")
+        WRITE "Masukkan tinggi tabung: "
+        CALL Input_negatif(&tinggiTabung, " ")
+        WRITE "Volume tabung : $volumeTabung(jariJariTabung, tinggiTabung)"
+        WRITE "Luas permukaan tabung : $lpTabung(jariJariTabung, tinggiTabung)"
+
+    ELSE IF(input==2) THEN
+        WRITE " Masukkan jari-jari bola: "
+        CALL Input_negatif(&jariJariBola, " ")
+        WRITE "Volume bola : $volumeBola(jariJariBola)"
+        WRITE "Luas permukaan bola : $lpBola(jariJariBola)";
+
+    ELSE IF(input==3) THEN
+        WRITE "Masukkan sisi alas limas: "
+        CALL Input_negatif(&sisiLimas, " ")
+        WRITE "Masukkan tinggi limas: "
+        CALL Input_negatif(&tinggiLimas, " ")
+        WRITE "Masukkan tinggi sisi miring limas: "
+        CALL Input_negatif(&tinggiSisiMiring, " ")
+        WRITE "Volume limas : $volumeLimas(sisiLimas, tinggiLimas)"
+        WRITE "Luas permukaan limas : $lpLimas(sisiLimas, tinggiSisiMiring)"
+
+    ELSE IF(input==4) THEN
+        WRITE "Masukkan panjang alas prisma: "
+        CALL input_negatif(&panjangAlasPrisma, " ")
+        WRITE "Masukkan panjang alas prisma lainnya: "
+        CALL Input_negatif(&panjangAlas2Prisma, " ")
+        WRITE "Masukkan panjang alas prisma lainnya: "
+        CALL Input_negatif(&panjangAlas3Prisma, " ")
+        WRITE "Masukkan tinggi alas prisma: "
+        CALL Input_negatif(&tinggiAlasPrisma," ")
+        WRITE "Masukkan tinggi prisma: "
+        CALL Input_negatif(&tinggiPrisma, " ")
+        WRITE "Volume prismaa : $volumePrisma(panjangAlasPrisma, tinggiAlasPrisma, tinggiPrisma)"
+        WRITE "Luas permukaan prisma : $lpPrisma(panjangAlasPrisma, panjangAlas2Prisma, panjangAlas3Prisma, tinggiAlasPrisma, tinggiPrisma)"
+
+    ELSE IF(input==5) THEN
+        WRITE "Masukkan jari-jari kerucut: "
+        CALL Input_negatif(&jariJariKerucut, " ")
+        WRITE "Masukkan tinggi kerucut: "
+        CALL Input_negatif(&tinggiKerucut, " "
+        WRITE "Masukkan tinggi garis pelukis kerucut: "
+        CALL Input_negatif(&garisPelukisKerucut, " ")
+        WRITE "Volume kerucut : %.2f", volumeKerucut(jariJariKerucut, tinggiKerucut)"
+        WRITE "Luas permukaan kerucut : $lpKerucut(jariJariKerucut, garisPelukisKerucut)"
+        
+    WRITE " Apakah kamu ingin menghitung lagi?"
+	CALL Input_negatif(&read,"\t\t\t\t (2 = tidak / 1 = iya):  ")
+	CALL system("cls")    
+    WHILE (read == 1)
+    WRITE("\t\t __________________________________________________________________  \n"
+    WRITE("\t\t   ______________________________________________________________  \n"
+	WRITE("\t\t| |                                                             | |\n"
+	WRITE("\t\t| |                                                             | |\n"
+	WRITE("\t\t| |    Terima Kasih Telah Menggunakan Program Ini yaaaaaa!!!    | |\n"
+    WRITE("\t\t| |                                                             | |\n"
+	WRITE("\t\t| |                                                             | |\n"
+    WRITE("\t\t| |        \\||||||||||||||||||||   ||||||||||||||||||\\          | |\n"
+    WRITE("\t\t| |         \\|||||||||||||||||||   |||||||||||||||||||\\         | |\n"
+    WRITE("\t\t| |          \\||||||||||||||||||   ||||||||||||||||||||\\        | |\n"
+    WRITE("\t\t| |                   ||||||||||                                | |\n"
+    WRITE("\t\t| |                   ||||||||||   ||||||||||||||||||||/        | |\n"
+    WRITE("\t\t| |                   ||||||||||   |||||||||||||||||||/         | |\n"
+    WRITE("\t\t| |                   ||||||||||   ||||||||||||||||||/          | |\n"
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE("\t\t| |                    \\||||||||   |||||||/                     | |\n"
+    WRITE("\t\t| |                     \\|||||||   ||||||/                      | |\n"
+    WRITE("\t\t| |                      \\||||||   |||||/                       | |\n"
+    WRITE("\t\t| |                       \\|||||   ||||/                        | |\n"
+    WRITE("\t\t| |                        \\||||   |||/                         | |\n"
+	WRITE("\t\t| |_____________________________________________________________| |\n"
+	WRITE("\t\t____________________________________________________________________ \n"
+return 0;
+END

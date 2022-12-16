@@ -1,0 +1,23 @@
+KONSEP PEMROGRAMAN
+
+https://garudacyber.co.id/artikel/587-konsep-dasar-pemrograman
+https://www.invasikode.com/konsep-dasar-pemrograman
+https://labict.budiluhur.ac.id/konsep-dasar-pemrograman/
+
+
+
+MODUL 4
+
+https://www.petanikode.com/c-struct/
+http://ainkhina.blogspot.com/2010/05/struct-pada-c.html
+https://tutorialkuliah.blogspot.com/2009/10/perbedaan-class-dan-structure-private.html?m=0
+https://www.ibm.com/docs/en/xl-c-and-cpp-aix/11.1.0?topic=only-classes-structures
+https://learn.microsoft.com/id-id/cpp/cpp/unions?view=msvc-170
+https://www.codelogi.com/2019/06/struct.html
+https://www.belajarcpp.com/tutorial/cpp/access-modifier/
+https://www.codelogi.com/2021/12/oop_11.html
+https://www.ibm.com/docs/en/i/7.4?topic=functions-atof-convert-character-string-float
+https://www.geeksforgeeks.org/atol-atoll-and-atof-functions-in-c-c/
+https://www.mahirkoding.com/operasi-file-dalam-bahasa-c/
+https://www.petanikode.com/c-file/
+https://www.nblognlife.com/2016/04/operasi-file-c-menulis-dan-membaca-file.html

@@ -1,0 +1,107 @@
+//Program untuk menghitung angsuran
+
+
+FUNCTION validasi() : int
+DEKLARASI:
+    input, notValid : char
+    valid : int
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1 THEN) 
+        return valid
+    ELSE 
+        WRITE(" Maaf Input anda salah ! ")
+        WRITE(" Masukan Input Dengan Benar ")            
+        CALL validasi()
+END
+
+FUNCTION validasiRange() : int
+DEKLARASI:
+    input, notValid : char
+    valid : int
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1 && valid == 1 || valid == 2)
+        return valid    
+    ELSE 
+        WRITE(" Maaf Input anda salah ! ")
+        WRITE(" Masukan Input Dengan Benar ")            
+        CALL validasiRange()
+END
+
+
+PROCEDURE namaKelompok() : void
+DESKRIPSI:
+BEGIN
+    WRITE "namaKelompok"
+END
+
+FUNCTION angsuran() : int
+DEKLARASI:
+    pokokPinjaman,lamaPinjamanBulan, lamaPinjamanBulan, angsuranPokok, bungaBulanY, angsuranPerbulan, bungaBulanY, angsuranPerbulan : int
+    bungaSetahun : float
+DESKRIPSI:
+BEGIN
+    WRITE("Masukan Pokok Pinjaman : ")
+    pokokPinjaman = validasi()
+    WRITE("Masukan Besar Bunga : ")
+    bungaSetahun = validasi()
+    WRITE("Masukan Lama Pinjaman dalam Bulan : ")
+    lamaPinjamanBulan = validasi()
+    angsuranPokok = pokokPinjaman/lamaPinjamanBulan
+    bungaSetahun = bungaSetahun/100
+    WRITE("\t\t _____________________________________________________________\n")
+    WRITE("\t\t|        |            |                  |                    |\n")
+    WRITE("\t\t| Bulan  | Bunga      | Angsuran Pokok   | Angsuran Perbulan  |\n")
+    WRITE("\t\t|________|____________|__________________|____________________|\n")
+    FOR ( int i = 1 i <= lamaPinjamanBulani++)
+        bungaBulanY = (pokokPinjaman - ((i-1) * angsuranPokok)) * bungaSetahun/12
+        angsuranPerbulan = bungaBulanY + angsuranPokok
+        IF (i < 10) THEN
+        WRITE("\t\t| %d      | Rp. %d   | Rp. %d        | Rp.  %d         |\n", i,bungaBulanY,angsuranPokok,angsuranPerbulan)
+        ELSE IF (bungaBulanY < 1000) THEN
+        WRITE("\t\t| %d     | Rp. %d    | Rp. %d        | Rp.  %d         |\n", i,bungaBulanY,angsuranPokok,angsuranPerbulan)
+        ELSE 
+        WRITE("\t\t| %d     | Rp. %d   | Rp. %d        | Rp.  %d         |\n", i,bungaBulanY,angsuranPokok,angsuranPerbulan)
+        WRITE("\t\t---------------------------------------------------------------\n")
+    ENDFOR
+END
+
+FUNCTION main() : int
+DEKLARASI:
+BEGIN
+    read : int
+    CALL namaKelompok()
+    DO
+    WRITE(" MENGHITUNG ANGSURAN ")
+    CALL angsuran()
+    WRITE(" Apakah anda ingin menghitung lagi? ")
+    WRITE(" (1 = ya / 2 = tidak) ")                
+    read = validasiRange()  
+    WHILE(read == 1)
+    WRITE("\t\t __________________________________________________________________  \n")
+    WRITE("\t\t   ______________________________________________________________  \n")
+	WRITE("\t\t| |                                                             | |\n")
+	WRITE("\t\t| |                                                             | |\n")
+	WRITE("\t\t| |    Terima Kasih Telah Menggunakan Program Ini yaaaaaa!!!    | |\n")
+    WRITE("\t\t| |                                                             | |\n")
+	WRITE("\t\t| |                                                             | |\n")
+    WRITE("\t\t| |        \\||||||||||||||||||||   |||||||||||||||||\\           | |\n")
+    WRITE("\t\t| |         \\|||||||||||||||||||   ||||||||||||||||||\\          | |\n")
+    WRITE("\t\t| |          \\||||||||||||||||||   |||||||||||||||||||\\         | |\n")
+    WRITE("\t\t| |                   ||||||||||                                | |\n")
+    WRITE("\t\t| |                   ||||||||||   |||||||||||||||||||/         | |\n")
+    WRITE("\t\t| |                   ||||||||||   ||||||||||||||||||/          | |\n")
+    WRITE("\t\t| |                   ||||||||||   |||||||||||||||||/           | |\n")
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n")
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n")
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n")
+    WRITE("\t\t| |                   ||||||||||   |||||||||                    | |\n")
+    WRITE("\t\t| |                    \\||||||||   |||||||/                     | |\n")
+    WRITE("\t\t| |                     \\|||||||   ||||||/                      | |\n")
+    WRITE("\t\t| |                      \\||||||   |||||/                       | |\n")
+    WRITE("\t\t| |                       \\|||||   ||||/                        | |\n")
+    WRITE("\t\t| |                        \\||||   |||/                         | |\n")
+	WRITE("\t\t| |_____________________________________________________________| |\n")
+	WRITE("\t\t____________________________________________________________________ \n")
+END

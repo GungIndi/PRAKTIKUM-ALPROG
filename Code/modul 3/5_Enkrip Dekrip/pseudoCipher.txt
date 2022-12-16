@@ -1,0 +1,239 @@
+//Program Enkripsi dan Dekripsi
+
+PROCEDURE errorPlain() : void
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE " Maaf Input Plaintext Anda Salah !"
+    WRITE " Mohon Hanya Inputkan Huruf dalam lowercase"          
+END
+
+PROCEDURE errorCipher() : void
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE " Maaf Input Ciphertext Anda Salah !"
+    WRITE " Mohon Hanya Inputkan Huruf dalam Uppercase"        
+END
+
+FUNCTION validasiRange() : input
+DEKLARASI:
+    input, notValid : char
+    valid : int
+    READ input, notValid
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1 && valid == 1 || valid == 2)
+        return valid
+    ELSE
+        CALL system("cls")
+        WRITE " Maaf Input anda salah!"
+        WRITE " Masukan Input Dengan Benar"      
+        validasiRange()
+END
+
+
+FUNCTION validasiKey() : int
+DEKLARASI:
+    input, notValid : char
+    valid : int
+    READ input, notValid
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1 && valid > 0)
+        return valid     
+    ELSE
+        CALL system("cls")
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Jumlah Pergeseran Dengan Benar"   
+        CALL validasiKey()
+END
+
+PROCEDURE plain (char* plainText, int key) : void
+DEKLRASI:
+    a,salah : int
+    hasil : char
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    IF ((int)plainText[0] == 10) THEN
+    CALL errorPlain()
+    FOR (int i = 0 i < 4 i++ ){
+        IF ((int)plainText[i] == 9) THEN
+            errorPlain()
+    ENDFOR
+    FOR(int i = 0 i < strlen(plainText)-1i++)
+        IF ((int)plainText[i] >= 97 && (int)plainText[i] <= 122 || (int)plainText[i] == 32) THEN
+            IF ((int)plainText[i] == 32) THEN
+            a = 32
+            ELSE 
+            a = ((int)plainText[i] - 97 + key) % 26 + 65
+            hasil[i] = (char)(a)
+        ELSE
+            salah++
+            break
+    ENDFOR
+    IF (salah == 0)
+    WRITE "Plaintext = "
+    FOR(int i = 0 i < strlen(plainText)-1i++)
+        WRITE "$plainText[i]"
+    ENDFOR
+    WRITE "Ciphertext = "
+    FOR(int i = 0 i < strlen(plainText)-1i++)
+        WRITE "$hasil[i]"
+    ENDFOR         
+    ELSE 
+    CALL errorPlain()
+END
+
+PROCEDURE cipher(char* cipherText, int key)
+DEKLARASI:
+    a, salah : int
+    hasil[100] : char 
+DESKRIPSI: 
+BEGIN
+    CALL system("cls")
+    IF ((int)cipherText[0] == 10) THEN
+        CALL errorCipher()
+    FOR (int i = 0 i < 4 i++ )
+        IF ((int)cipherText[i] == 9) THEN
+            CALL errorCipher()
+    ENDFOR
+    FOR(int i = 0 i < strlen(cipherText)-1i++)
+        IF ((int)cipherText[i] >= 65 && (int)cipherText[i] <= 90 || (int)cipherText[i] == 32) THEN
+            IF((int)cipherText[i] == 32) THEN 
+                a = 32
+            ELSE
+                a = ((int)cipherText[i] - 65 - key) % 26 + 97
+                hasil[i] = (char)(a)
+        ELSE salah++
+    ENDFOR
+    IF(salah == 0)
+        WRITE " Ciphertext = "
+        FOR (int i = 0 i < strlen(cipherText)-1i++)
+            WRITE "$cipherText[i]"
+        ENDFOR
+        WRITE " Plaintext = "
+        FOR (int i = 0 i < strlen(cipherText)-1i++)
+            WRITE "$hasil[i]"
+        ENDFOR          
+    ELSE 
+    CALL errorCipher()  
+END
+
+PROCEDURE goodBye() : void
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE "\t\t __________________________________________________________________  \n"
+    WRITE "\t\t   ______________________________________________________________  \n"
+	WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |    Terima Kasih Telah Menggunakan Program Ini yaaaaaa!!!    | |\n"
+    WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |                                                             | |\n"
+    WRITE "\t\t| |        \\||||||||||||||||||||   |||||||||||||||||\\           | |\n"
+    WRITE "\t\t| |         \\|||||||||||||||||||   ||||||||||||||||||\\          | |\n"
+    WRITE "\t\t| |          \\||||||||||||||||||   |||||||||||||||||||\\         | |\n"
+    WRITE "\t\t| |                   ||||||||||                                | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||||||||||||/         | |\n"
+    WRITE "\t\t| |                   ||||||||||   ||||||||||||||||||/          | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||||||||||/           | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                    \\||||||||   |||||||/                     | |\n"
+    WRITE "\t\t| |                     \\|||||||   ||||||/                      | |\n" 
+    WRITE "\t\t| |                      \\||||||   |||||/                       | |\n"
+    WRITE "\t\t| |                       \\|||||   ||||/                        | |\n"
+    WRITE "\t\t| |                        \\||||   |||/                         | |\n"
+	WRITE "\t\t| |_____________________________________________________________| |\n"
+	WRITE "\t\t____________________________________________________________________ \n"
+END
+
+
+FUNCTION ulang() : int
+DEKLARASI:
+    pilihan : int
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE " Apakah anda ingin mencoba lagi?"
+    WRITE " (1 = ya / 2 = tidak)"            
+    pilihan = validasiRange()   
+    SWITCH (pilihan)
+    CASE 1:
+        CALL system("cls")
+        return 1
+    CASE 2:
+        CALL goodBye()
+        break
+    DEFAULT:
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Input Dengan Benar"          
+        CALL ulang()
+    ENDSWITCH
+END
+
+PROCEDURE mainMenu(): void
+DEKLARASI:
+        pilihan, read, key : int
+        plainText, ciphertext : char
+DESKRIPSI:
+BEGIN
+        DO
+        CALL system("cls")
+        WRITE "\t\t __________________________________________________________________  \n"
+        WRITE "\t\t   ______________________________________________________________  \n"
+        WRITE "\t\t| |                                                              | |\n"
+        WRITE "\t\t| |                       ENKRIPSI DAN DEKRIPSI                  | |\n"
+        WRITE "\t\t| |______________________________________________________________| |\n"
+        WRITE "\t\t| |                  |                                           | |\n"
+        WRITE "\t\t| |     1.           |      Enkripsi                             | |\n"
+        WRITE "\t\t| |                  |                                           | |\n"
+        WRITE "\t\t| |     2.           |      Dekripsi                             | |\n"
+        WRITE "\t\t| |______________________________________________________________| |\n"
+        WRITE "\t\t____________________________________________________________________ \n\n"
+        WRITE "Pilih Konversi : "
+        pilihan = validasiRange()
+        SWITCH (pilihan){
+            CASE 1:
+                system("cls")
+                WRITE " Masukan Plaintext : "
+                READ plainText
+                WRITE " Masukan Jumlah Pergeseran : "
+                key = validasiKey()
+                CALL plain(plainText, key)
+            CASE 2: 
+                CALL system("cls")      
+                WRITE " Masukan Ciphertext : "
+                READ cipherText
+                WRITE "Masukan Jumlah Pergeseran : "
+                key = validasiKey()
+                cipher(ciphertext, key)
+            DEFAULT:
+                WRITE " Maaf Input anda salah !"
+                WRITE " Masukan Input Dengan Benar"
+                CALL mainMenu()
+        ENDSWITCH
+        CALL system("pause")
+        read = ulang()
+        WHILE(read == 1)        
+END
+
+PROCEDURE namaKelompok() : void
+DESKRIPSI:
+BEGIN
+        CALL system("cls")
+        WRITE "namakelompok"
+        CALL system("cls")
+END
+
+FUNCTION main() : int
+DESKRIPSI:
+BEGIN
+    CALL namaKelompok()
+    CALL mainMenu()
+END
+

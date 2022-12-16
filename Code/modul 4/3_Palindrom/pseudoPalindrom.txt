@@ -1,0 +1,191 @@
+// Program Palindrom
+
+
+     hasil : bool
+
+FUNCTION main() : int
+DESKRIPSI:
+BEGIN
+    CALL namaKelompok()
+    CALL mainMenu()
+END
+
+FUNCTION palindrom(char string[]) : bool
+DEKLARASI: 
+    len, middle, salah : int
+DESKRIPSI:
+BEGIN
+    len = strlen(string)-1
+    middle = len / 2
+    FOR(int i = 0; i < strlen(string);i++)
+        IF (i == middle-1) THEN
+            BREAK
+        ELSE IF (string[i] != string[len-1]) THEN
+            salah++
+        len--
+    ENDFOR
+    IF( salah > 0) THEN
+        return false
+    ELSE 
+        return true
+END
+
+FUNCTION frequency(char *string, int frequency[]) : int
+DEKLARASI:
+    c : char
+    len, whitespace : int
+DESKRIPSI:
+BEGIN
+    len = strlen(string)-1
+    IF (len < 2) THEN
+        CALL pesanError()
+    FOR (int i = 0; i < len; i++)
+        IF ((int)string[i] == 32 || (int)string[i] == 10 || (int)string[i] == 9 ) THEN 
+            whitespace++
+        c = tolower(string[i])
+        IF( (int)c >= 97 && (int)c <= 122) THEN
+            frequency[c-97]++
+        ELSE   
+            CALL pesanError()
+    ENDFOR
+    IF (whitespace > 0) 
+        CALL pesanError()
+    
+END
+
+FUNCTION display(char *string, int frequency[]) : int
+DEKLARASI:
+    redundansi, len : int
+    a : char
+DESKRIPSI:
+BEGIN
+    len = strlen(string)-1;
+    FILE *f = fopen("kamuskata.txt","ab")
+    WRITE "$string($len) : "
+    FOR (int i = 0; i < len; i++)
+        a[i] = string[i]
+        redundansi = 0
+        FOR (int j =0;j<i;j++)
+            IF (a[i] == string[j]) THEN
+                redundansi++
+        ENDFOR
+        IF (redundansi == 0) THEN
+            WRITE "$string[i] = $frequency[string[i]-97]"        
+    ENDFOR
+    IF (hasil == true) 
+        WRITE ": Palindrom\n"
+    ELSE
+        WRITE ": bukan Palindrom" 
+    fclose(f)
+END
+
+PROCEDURE pesanError() : void
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE " Maaf Input  Anda Salah !"
+    WRITE " Mohon hanya inputkan huruf "         
+    CALL system("pause")
+    CALL mainMenu()
+END
+
+PROCEDURE mainMenu() : void
+DEKLARASI:
+    pilihan, read : int
+    string : char
+DESKRIPSI:
+BEGIN
+    DO
+    letterFrequency : int
+    CALL system("cls");
+    WRITE " PALINDROM CHECKER"
+    WRITE " Masukan kata : "
+    READ string
+    hasil = palindrom(string)
+    CALL frequency(string,letterFrequency)
+    CALL display(string,letterFrequency)
+    CALL system("cls") 
+    WRITE " PROGRAM SUKSES!!!"
+    WRITE "untuk hasil bisa di cek pada kamuskata.txt"
+    CALL system("pause")
+    read = ulang()
+    WHILE(read == 1)     
+END
+
+PROCEDURE namaKelompok() : void
+DESKRIPSI:
+BEGIN
+    CALL system("cls");
+    WRITE "namaKelompok"
+    CALL system("pause")
+    CALL system("cls")
+END
+
+FUNCTION ulang() : int
+DEKLARASI:
+    pilihan : int
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE " Apakah anda ingin mencoba lagi?"
+    WRITE " (1 = ya / 2 = tidak)"            
+    pilihan = validasiRange()
+    SWITCH (pilihan)
+    CASE 1:
+        CALL system("cls")
+        return 1
+    CASE 2:
+        CALL goodBye()
+    DEFAULT:
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Input Dengan Benar"  
+        CALL ulang()
+    ENDSWITCH
+END
+
+FUNCTION validasiRange() : int
+DEKLARASI:
+    input, notValid : char
+    valid : int
+    READ input, notValid
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1 && valid == 1 || valid == 2) THEN
+        return valid
+    ELSE
+        CALL system("cls");
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Input Dengan Benar" 
+        CALL validasiRange()
+END
+
+FUNCTION goodBye() : void
+DESKRIPSI:
+BEGIN
+    CALL system("cls")
+    WRITE "\t\t __________________________________________________________________  \n"
+    WRITE "\t\t   ______________________________________________________________  \n"
+	WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |    Terima Kasih Telah Menggunakan Program Ini yaaaaaa!!!    | |\n"
+    WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |                                                             | |\n"
+    WRITE "\t\t| |        \\||||||||||||||||||||   |||||||||||||||||\\           | |\n"
+    WRITE "\t\t| |         \\|||||||||||||||||||   ||||||||||||||||||\\          | |\n"
+    WRITE "\t\t| |          \\||||||||||||||||||   |||||||||||||||||||\\         | |\n"
+    WRITE "\t\t| |                   ||||||||||                                | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||||||||||||/         | |\n"
+    WRITE "\t\t| |                   ||||||||||   ||||||||||||||||||/          | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||||||||||/           | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                    \\||||||||   |||||||/                     | |\n"
+    WRITE "\t\t| |                     \\|||||||   ||||||/                      | |\n"
+    WRITE "\t\t| |                      \\||||||   |||||/                       | |\n"
+    WRITE "\t\t| |                       \\|||||   ||||/                        | |\n"
+    WRITE "\t\t| |                        \\||||   |||/                         | |\n"
+	WRITE "\t\t| |_____________________________________________________________| |\n"
+	WRITE "\t\t____________________________________________________________________ \n"
+END

@@ -1,0 +1,154 @@
+//Program Konversi Biner
+
+FUNCTION validasi() : int
+DEKLARASI:
+    input, notValid : char
+    valid : int
+    READ input, notValid
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1) THEN 
+        return valid
+    ELSE
+        CALL system("cls")
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Input Dengan Benar "          
+        CALL validasi()
+END
+
+FUNTION validasiRange() : int
+DEKLARASI:
+    input, notValid : char
+    valid : int
+    READ input, notValid
+DESKRIPSI:
+BEGIN
+    IF (sscanf(input, "%d%c", &valid, &notValid) == 1 && valid == 1 || valid == 2) THEN
+        return valid   
+    ELSE
+        CALL system("cls")
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Input Dengan Benar"
+        CALL validasiRange()
+END
+
+PROCEDURE decimalToBinary() : void
+DEKLARASI:
+    a, n, hasil, desimal, binary: int
+DESKRIPSI:
+BEGIN
+    WRITE " Masukan Nilai Desimal : "
+    READ desimal
+    a = validasi()
+    FOR(int i = 0 a > 0 i++)
+        n = a%2
+        a/= 2
+        hasil[i] = n
+    ENDFOR
+    FOR(int i = 0 i < sizeof(hasil)/sizeof(hasil[0]) i++)
+        hasil[i] = (hasil[i] * pow(10,i))
+        binary += hasil[i]
+    ENDFOR
+    CALL system("cls")
+    WRITE "Bilangan Desimal : $desimal" 
+    WRITE "Bilangan Biner  : $binary"            
+END
+
+PROCEDURE binarytoDec() : void
+DEKLARASI:
+    a, hasil : int
+    biner : char 
+    WRITE "masukan nilai biner : "
+    READ biner
+DESKRIPSI:
+BEGIN
+    FOR(int i = 0 i < strlen(biner) i++)
+        IF(biner[i] != '1' && biner[i] != '0')
+            a++
+            WRITE("i = $i, a = $a, biner = $biner[i]
+        ELSE IF(biner[i] == '1' )
+            hasil += (pow(2,strlen(biner)-1-i))
+    ENDFOR
+    IF(a > 0)
+        CALL system("cls")
+        WRITE " Maaf Input anda salah !"
+        WRITE " Masukan Input Dengan Benar"    
+        CALL binarytoDec()
+    ELSE
+        WRITE "\n$hasil\n"
+        CALL system("cls")
+    WRITE " Bilangan Biner   : $biner"
+    WRITE " Bilangan Desimal : $hasil"
+END
+
+
+PROCEDURE namaKelompok() : void
+        CALL system("cls")
+        WRITE "namakelompok"
+        CALL system("pause")
+        CALL system("cls")
+}
+
+PROCEDURE  mainMenu() : void
+DEKLARASI
+    pilihan, read : int
+DEKRIPSI:
+BEGIN
+    DO
+        CALL system("cls")
+        WRITE " mainMenu"
+        WRITE " Konversi : "
+        pilihan = validasiRange()
+        SWITCH (pilihan)
+            case 1:
+            CALL decimalToBinary()
+            break
+            case 2:
+            CALL binarytoDec()
+            break
+            default:
+            WRITE " Maaf Input anda salah !"
+            WRITE " Masukan Input Dengan Benar"           
+            CALL mainMenu()
+        ENDSWITCH
+        CALL system("pause")
+        CALL system("cls")
+        WRITE " Apakah anda ingin menghitung lagi?"
+        WRITE "(1 = ya / 2 = tidak)")          
+        read = validasiRange()   
+    WHILE(read == 1)
+    CALL system("cls")
+    WRITE "\t\t __________________________________________________________________  \n"
+    WRITE "\t\t   ______________________________________________________________  \n"
+	WRITE "\t\t| |                                                             | |\n"
+	WRITE " \t\t| |                                                             | |\n"
+	WRITE "\t\t| |    Terima Kasih Telah Menggunakan Program Ini yaaaaaa!!!    | |\n"
+    WRITE "\t\t| |                                                             | |\n"
+	WRITE "\t\t| |                                                             | |\n"
+    WRITE "\t\t| |        \\||||||||||||||||||||   |||||||||||||||||\\           | |\n"
+    WRITE "\t\t| |         \\|||||||||||||||||||   ||||||||||||||||||\\          | |\n"
+    WRITE "\t\t| |          \\||||||||||||||||||   |||||||||||||||||||\\         | |\n"
+    WRITE "\t\t| |                   ||||||||||                                | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||||||||||||/         | |\n"
+    WRITE "\t\t| |                   ||||||||||   ||||||||||||||||||/          | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||||||||||/           | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                   ||||||||||   |||||||||                    | |\n"
+    WRITE "\t\t| |                    \\||||||||   |||||||/                     | |\n"
+    WRITE "\t\t| |                     \\|||||||   ||||||/                      | |\n"
+    WRITE "\t\t| |                      \\||||||   |||||/                       | |\n"
+    WRITE "\t\t| |                       \\|||||   ||||/                        | |\n"
+    WRITE "\t\t| |                        \\||||   |||/                         | |\n"
+	WRITE "\t\t| |_____________________________________________________________| |\n"
+	WRITE "\t\t____________________________________________________________________ \n"
+END
+
+
+FUNCTION main() : int
+DESKRIPSI
+BEGIN
+    CALL namaKelompok()
+    CALL mainMenu()
+END
