@@ -1,0 +1,21 @@
+[SAYEMBARA PRAKTIKUM ALGORITMA PEMROGRAMAN]
+
+Hari ini Abel sedang tiduran di rumah untuk melakukan browsing santai lewat hp nya, tiba tiba dia menemukan video dari sebuah situs ternama yaitu https://twitter.com/DelbertYessir23/status/1602707238245867520 dengan video yang sepertinya terdapat pesan rahasia di dalamnya. Karena abel sangat sibuk dalam kehidupannya, dia membuat sayembara untuk membuat kode program yang dapat mengambil isi dari pesan rahasia yang ada pada program tersebut dan memberikannya ke https://s.id/FansNomorSatuAbel
+Hadiah untuk 2 orang tercepat yang dapat mengambil isi pesan rahasia tersebut dan mengirimkan ke https://s.id/FansNomorSatuAbel akan mendapatkan nilai tambah untuk Praktikum Algoritma Pemrograman. 
+
+  a. Executive Summary
+    diberikan video seperti pada repo
+    
+  b. Technical Report
+    Diberikan video yang berisi mas" cepmek sedang bergumam dan di tiap" frame nya disisipkan qr code secara acak
+    setelah di cek video tsb memiliki frame rate 25 frame per second
+    untuk memecah video dan mengambil framenya secara lengkap gunakan command ffmpeg pada terminal linux
+    
+    $ ffmpeg -i model-rambut-cepmek-cepak-mekar-ala-dilan-1990-kw.mp4 -r 25 -f image2 image-%5d.jpeg
+    
+    setelah nya didapat 2934 frame, ada frame qr code sama frae mas" cepmek
+    
+    setelah didapat per frame, eksekusi solver yang ada pada repo ini untuk mem-brutescan seluruh frame dan didapat pesan rahasianya pada image-2928
+    
+  c. FLAG
+    coNgratss_KaMU_SuDAH_gA_nANYeAA_lAgI_biKIN_PRogram_8eKF934UtJ
