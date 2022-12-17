@@ -2,7 +2,6 @@ import cv2
 import os
 
 from cv2 import QRCodeDetector
-f = open('hasil.txt','a+')
 directory = 'POSTTEST'
 i = 0
 
@@ -17,10 +16,3 @@ for filename in file:
     data, _ , _  = qr.detectAndDecode(img)
     i += 1
     print(str(i) +" "+ data)
-    if len(data) == 0:
-        f.write('\n')
-    else:
-        f.write(data + '\n')   
-  
-
-
