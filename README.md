@@ -1,3 +1,3 @@
 # PRAKTIKUM-ALPROG
 
-everything about praktikum
+Everything about praktikum Algoritma & Pemrograman smt 1
